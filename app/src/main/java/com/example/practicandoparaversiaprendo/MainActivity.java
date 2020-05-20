@@ -49,13 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     ConexionSQLiteHelper conn;
 
-    @Override
-    protected void onStart() {
 
-        super.onStart();
-        ObtenerDatos();
-
-    }
 
     @Override
     protected void onRestart() {
@@ -63,19 +57,10 @@ public class MainActivity extends AppCompatActivity {
         ObtenerDatos();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        ObtenerDatos();
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ObtenerDatos();
-    }
 
-  
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         //se llama al metodo para la obtencion de datosregistrarMiMusica();
         registrarMiMusica();
         ObtenerDatos();
+
 
 
     }
@@ -195,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                     long idResultante = db.insert(Utilidades.TABLA_Musica,Utilidades.CAMPO_Name,values);
                     if (idResultante != -1){
                         Toast.makeText(getApplicationContext(),"Id Registro:"+ idResultante,Toast.LENGTH_SHORT).show();
-
+                        onRestart();
                     }
                     else  Toast.makeText(getApplicationContext(),"Error:"+ idResultante,Toast.LENGTH_SHORT).show();
 
