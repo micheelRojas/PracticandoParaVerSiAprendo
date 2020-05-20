@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private AdaterDatos adaterDatos;
     // la lista de datos del recycler
     private ArrayList<Musica> musicas = new ArrayList<Musica>();
-    public  static ArrayList<Musica>lista = new ArrayList<>();
+    public   ArrayList<Musica>lista = new ArrayList<>();
     // Para los mensajes
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
     // el URL el original no tiene la s (https) si no (http) por alguna razon  da error asi (http)
@@ -167,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
                 String artist = bundle.getString("artist");
                 //toast para saber que que es lo que se envia
                 Toast.makeText(getApplicationContext(), name+"  "+duration, Toast.LENGTH_LONG ).show();
-                // se agg el la nueva a lista
-                musicas.add(new Musica(name, duration,artist));
+                // se agg el la  a lista, esa agg no esta funcionando, es la del consultar para que salga en el recycler
+               // musicas.add(new Musica(name, duration,artist));
                 ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this,"db_musica",null,1);
                 SQLiteDatabase db=conn.getWritableDatabase();
                 try {
@@ -181,14 +181,14 @@ public class MainActivity extends AppCompatActivity {
                     long idResultante = db.insert(Utilidades.TABLA_Musica,Utilidades.CAMPO_Name,values);
                     if (idResultante != -1){
                         Toast.makeText(getApplicationContext(),"Id Registro:"+ idResultante,Toast.LENGTH_SHORT).show();
-                        onRestart();
+                       // onRestart();
                     }
                     else  Toast.makeText(getApplicationContext(),"Error:"+ idResultante,Toast.LENGTH_SHORT).show();
 
                 }
                 finally {
                     db.close();
-                    onBackPressed();
+
                 }
             }
 
