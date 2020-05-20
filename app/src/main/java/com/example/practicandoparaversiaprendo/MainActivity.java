@@ -50,16 +50,10 @@ public class MainActivity extends AppCompatActivity {
     ConexionSQLiteHelper conn;
 
 
-
     @Override
     protected void onRestart() {
         super.onRestart();
-        ObtenerDatos();
     }
-
-
-
-
 
 
     @Override
@@ -181,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                     long idResultante = db.insert(Utilidades.TABLA_Musica,Utilidades.CAMPO_Name,values);
                     if (idResultante != -1){
                         Toast.makeText(getApplicationContext(),"Id Registro:"+ idResultante,Toast.LENGTH_SHORT).show();
-                       // onRestart();
+                        onRestart();
                     }
                     else  Toast.makeText(getApplicationContext(),"Error:"+ idResultante,Toast.LENGTH_SHORT).show();
 
